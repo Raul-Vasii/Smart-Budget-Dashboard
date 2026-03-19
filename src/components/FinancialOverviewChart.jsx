@@ -1,6 +1,6 @@
 import { AgCharts } from "ag-charts-react"
 
-function FinancialOverviewChart({ transactions }) {
+function FinancialOverviewChart({ transactions, darkMode }) {
   const income = transactions
     .filter((t) => t.type === "income")
     .reduce((sum, t) => sum + t.amount, 0)
@@ -18,6 +18,10 @@ function FinancialOverviewChart({ transactions }) {
   const expensesPercentage = total
     ? ((expenses / total) * 100).toFixed(1)
     : 0
+
+  const centerMainTextColor = darkMode ? "#f9fafb" : "#111827"
+  const centerSubTextColor = darkMode ? "#d1d5db" : "#6b7280"
+  const legendTextClass = darkMode ? "text-gray-200" : "text-gray-700"
 
   const data = [
     { asset: "Income", amount: income },
@@ -41,12 +45,12 @@ function FinancialOverviewChart({ transactions }) {
             text: `${incomePercentage}%`,
             fontSize: 24,
             fontWeight: "bold",
-            color: "#111827",
+            color: centerMainTextColor,
           },
           {
             text: "Income Share",
             fontSize: 13,
-            color: "#6b7280",
+            color: centerSubTextColor,
           },
         ],
       },
@@ -68,21 +72,21 @@ function FinancialOverviewChart({ transactions }) {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className="w-full max-w-[360px]">
+      <div className="w-full max-w-[280px] sm:max-w-[360px]">
         <AgCharts options={options} />
       </div>
 
       <div className="mt-4 flex items-center gap-6 text-sm">
         <div className="flex items-center gap-2">
           <span className="inline-block w-3 h-3 rounded-sm bg-indigo-600"></span>
-          <span className="text-gray-700 font-medium">
+          <span className={`${legendTextClass} font-medium`}>
             Income {incomePercentage}%
           </span>
         </div>
 
         <div className="flex items-center gap-2">
           <span className="inline-block w-3 h-3 rounded-sm bg-red-500"></span>
-          <span className="text-gray-700 font-medium">
+          <span className={`${legendTextClass} font-medium`}>
             Expenses {expensesPercentage}%
           </span>
         </div>
