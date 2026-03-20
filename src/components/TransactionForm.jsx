@@ -17,6 +17,13 @@ function TransactionForm({
   editingTransaction,
   updateTransaction,
 }) {
+  /*
+    Formularul acoperă două cerințe de bază din ghid: adăugare și editare.
+    În plus, bifează și cerința avansată de validări și notificări:
+    nu permite câmpuri goale sau sume <= 0 și afișează toast-uri pentru succes sau eroare.
+    Același formular este refolosit pentru add și update, iar în modul edit preia valorile
+    din tranzacția selectată ca să evite dublarea de UI și logică.
+  */
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
@@ -24,6 +31,7 @@ function TransactionForm({
   const [date, setDate] = useState("");
 
   useEffect(() => {
+    // Când utilizatorul apasă "Edit", formularul se populează automat cu datele existente.
     if (editingTransaction) {
       setTitle(editingTransaction.title);
       setAmount(editingTransaction.amount);
@@ -44,6 +52,7 @@ function TransactionForm({
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Validările locale răspund direct cerinței din ghid de a nu accepta date incomplete sau incorecte.
     if (!title || !amount || !category || !date) {
       toast.error("Please fill in all fields");
       return;

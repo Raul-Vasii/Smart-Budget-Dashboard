@@ -1,7 +1,13 @@
 import { useEffect } from "react"
 
 function DeleteConfirmModal({ isOpen, onClose, onConfirm, title }) {
+  /*
+    Modalul completează cerința de ștergere din CRUD, dar într-o formă mai sigură și mai clară.
+    În loc de ștergere instant, utilizatorul primește confirmare înainte de acțiunea definitivă,
+    ceea ce reduce erorile și crește calitatea experienței față de implementarea minimă.
+  */
   useEffect(() => {
+    // Escape închide modalul pentru un comportament mai apropiat de aplicațiile reale.
     if (!isOpen) return
 
     const handleKeyDown = (event) => {

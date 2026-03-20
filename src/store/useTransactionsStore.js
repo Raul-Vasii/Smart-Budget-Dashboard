@@ -23,6 +23,11 @@ const defaultTransactions = [
 export const useTransactionsStore = create(
   persist(
     (set) => ({
+      /*
+        Zustand bifează explicit una dintre cerințele avansate din ghid: state global management.
+        Store-ul centralizează lista de tranzacții și tranzacția aflată în editare,
+        iar metodele add/delete/update țin logica CRUD în afara componentelor pentru un cod mai curat.
+      */
       transactions: defaultTransactions,
       editingTransaction: null,
 
@@ -48,7 +53,8 @@ export const useTransactionsStore = create(
         })),
     }),
     {
-      name: "transactions-storage", // cheia din localStorage
+      // persist bifează cerința de salvare a datelor după refresh folosind localStorage.
+      name: "transactions-storage",
     }
   )
 )

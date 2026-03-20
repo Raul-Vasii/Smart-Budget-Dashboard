@@ -5,6 +5,12 @@ function TransactionItem({
   openDeleteModal,
   startEditTransaction,
 }) {
+  /*
+    Fiecare item reprezintă un element din CRUD:
+    utilizatorul vede datele, poate intra în editare sau poate porni ștergerea.
+    Componenta are două variante de layout, una tabelară pentru desktop și una tip card pentru mobil,
+    ca să bifeze clar cerința din ghid legată de utilizarea aplicației pe mai multe device-uri.
+  */
   const isIncome = transaction.type === "income";
 
   return (

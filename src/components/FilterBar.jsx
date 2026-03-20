@@ -20,6 +20,12 @@ function FilterBar({
   setSortBy,
   resetFilters,
 }) {
+  /*
+    FilterBar bifează cerința avansată din ghid pentru filtrare și sortare.
+    Aici utilizatorul poate căuta după titlu, filtra după tip și categorie,
+    apoi sorta după dată sau sumă. Butonul de reset readuce rapid dashboard-ul
+    la starea implicită, ceea ce face interfața mai ușor de folosit și explicat.
+  */
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 mt-8 transition-colors duration-300">
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">

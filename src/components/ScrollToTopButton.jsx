@@ -2,6 +2,11 @@ import { useEffect, useState } from "react"
 import { ArrowUp } from "lucide-react"
 
 function ScrollToTopButton() {
+  /*
+    Butonul acesta este un plus de UX făcut extra pentru varianta mobilă.
+    Ghidul cere responsive design, iar aici am adăugat o utilitate practică:
+    după scroll, utilizatorul poate reveni sus rapid fără să parcurgă manual toată pagina.
+  */
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {

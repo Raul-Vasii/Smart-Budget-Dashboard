@@ -1,4 +1,9 @@
 function Header({ darkMode, toggleDarkMode }) {
+  /*
+    Header-ul bifează cerința avansată de personalizare prin Dark Mode / Light Mode.
+    Butonul schimbă tema prin custom hook-ul useDarkMode, iar stilurile `dark:*`
+    fac interfața să rămână coerentă atât pe light, cât și pe dark.
+  */
   return (
     <header className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 py-4">

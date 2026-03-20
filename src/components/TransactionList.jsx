@@ -5,6 +5,12 @@ function TransactionList({
   openDeleteModal,
   startEditTransaction,
 }) {
+  /*
+    Lista afișează rezultatul final al cerințelor de bază și al celor extra:
+    - primește tranzacțiile deja filtrate/sortate din App;
+    - trimite acțiuni de editare și ștergere către fiecare rând;
+    - adaptează afișarea pentru desktop și mobil, ceea ce ajută la cerința de responsive design.
+  */
   return (
     <section className="mt-8">
       <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">

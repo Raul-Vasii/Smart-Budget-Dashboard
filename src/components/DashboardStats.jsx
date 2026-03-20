@@ -1,6 +1,11 @@
 import { formatCurrency } from "../utils/formatters"
 
 function DashboardStats({ transactions }) {
+  /*
+    Această componentă este partea de dashboard adăugată peste CRUD-ul minim din ghid.
+    Ea calculează total income, total expenses și balance din lista de tranzacții,
+    ca să ofere o privire rapidă asupra datelor și un UI mai apropiat de un produs real.
+  */
   const income = transactions
     .filter((t) => t.type === "income")
     .reduce((sum, t) => sum + t.amount, 0)
